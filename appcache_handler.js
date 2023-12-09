@@ -34,7 +34,7 @@ function add_cache_event_toasts() {
 
 
     appCache.addEventListener('downloading', function (e) {
-        showToast('Welcome to web browser');
+        showToast('Loading cache');
     }, false);
 
 
