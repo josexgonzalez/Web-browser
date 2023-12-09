@@ -32,9 +32,23 @@ function add_cache_event_toasts() {
     var appCache = window.applicationCache;
     
 
+    if (!navigator.onLine) {
+        showToast('Offline.', 300000); // Duración de 5 minutos
+    }
+
 
     appCache.addEventListener('downloading', function (e) {
-        showToast('Loading cache');
+        showToast('Loading cache, wait...');
+    }, false);
+
+
+    appCache.addEventListener('cached', function (e) {
+        showToast('It has been updated successfully.');
+    }, false);
+
+
+    appCache.addEventListener('obsolete', function (e) {
+        showToast('Site is obsolete, Clear the cache and restart the page.');
     }, false);
 
 
